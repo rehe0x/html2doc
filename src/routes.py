@@ -14,7 +14,7 @@ def downdoc():
     else:
         val = request.args.get("docid",None)
     durl = pdfToDocStart(val)
-    url = config.DOMAIN + '/s3/content.doc'
+    url = config.DOMAIN + '/s3/' +durl
     resp = make_response(url)
     resp.headers['Access-Control-Allow-Origin']='*'
     return resp

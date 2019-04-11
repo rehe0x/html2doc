@@ -40,4 +40,4 @@ def pdfToDocStart(docid):
     r = requests.get(durl)
     with open("./doc/content_"+docid+".doc", "wb") as code:
         code.write(r.content)
-    return durl
+    return "content_"+docid+".doc"

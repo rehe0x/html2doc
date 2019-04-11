@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<div id="reader"></div>
+<script src="http://static.bcedocument.com/reader/v2/doc_reader_v2_console.js?v=20161101"></script>
+ 
+<script>
+    function GetUrlParam(paraName) {
+　　　　var url = document.location.toString();
+　　　　var arrObj = url.split("?");
+       if (arrObj.length > 1) {
+　　　　　　var arrPara = arrObj[1].split("&");
+　　　　　　var arr;
+            for (var i = 0; i < arrPara.length; i++) {
+　　　　　　　 arr = arrPara[i].split("=");
+            if (arr != null && arr[0] == paraName) {
+　　　　　　　　　　return arr[1];
+　　　　　　　　}
+　　　　　　}
+　　　　　　return "";
+　　　　}
+　　　　else {
+　　　　　　return "";
+　　　　}
+　　}
+
+(function () {
+    var docid = GetUrlParam("docid")
+    function getQuery() {
+        var queryString = location.search.substr(1);
+        var queryArr = queryString.split('&');
+        var query = {};
+        for (var i = 0; i < queryArr.length; i++) {
+            var key = queryArr[i].split('=')[0];
+            var value = queryArr[i].split('=')[1];
+            query[key] = value;
+        }
+        return query;
+    }
+    function init() {
+        var query = getQuery();
+        var option = {
+             docId:   docid,
+             token: 'TOKEN',
+              host: 'BCEDOC',
+            width: 700,  
+            pn: 1,   
+            fontSize:'big',
+			zoom:false,
+			zoomStepWidth:200,
+			ready: function (handler) {  // 设置字体大小和颜色, 背景颜色（可设置白天黑夜模式）
+            handler.setFontSize(1);
+            handler.setBackgroundColor('#fff');
+            handler.setFontColor('#000');
+			},
+			flip: function (data) {    // 翻页时回调函数, 可供客户进行统计等
+            console.log(data.pn);
+        },
+            toolbarConf: {
+                page: true,  
+                pagenum: true,  
+                full: false, 
+                copy: true, 
+                position: 'center',  
+            }
+            //enviroment: 'online'
+        };
+        new Document('reader', option);
+    }
+    init();
+})();
+</script>
+
+</html>

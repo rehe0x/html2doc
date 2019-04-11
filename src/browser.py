@@ -5,6 +5,8 @@ import os
 import time
 
 
+#!/usr/bin/env python3
+# encoding: utf-8
 class Browser:
     def __init__(self):
         self.doc_path = os.path.abspath("./doc")

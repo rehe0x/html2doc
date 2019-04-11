@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+
 from .apis import upload,convert,status,download,getHtml
 from .browser import br
 import pdfkit

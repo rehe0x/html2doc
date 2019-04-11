@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+
 from src.routes import app
 from src.html2doc import pdfToDocStart
 

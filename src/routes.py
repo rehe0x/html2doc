@@ -11,9 +11,11 @@ app = Flask(__name__,static_folder='../doc',static_url_path='/s3')
 def downdoc():
     if request.method == 'POST':
         val = request.form.get("docid",None)
+        title = request.form.get("title",None)
     else:
         val = request.args.get("docid",None)
-    durl = pdfToDocStart(val)
+        title = request.args.get("title",None)
+    durl = pdfToDocStart(val,title)
     url = config.DOMAIN + '/s3/' +durl
     resp = make_response(url)
     resp.headers['Access-Control-Allow-Origin']='*'

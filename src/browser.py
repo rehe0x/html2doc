@@ -29,7 +29,7 @@ class Browser:
 
         js = 'document.getElementsByClassName("reader-container")[0].style.cssText="text-align: -webkit-center;"'
         self.browser.execute_script(js)
-        in_file(self.doc_path+'/content.html',self.browser.page_source)
+        in_file(self.doc_path+'/'+docid+'.html',self.browser.page_source)
         #print(browser.page_source)
         #self.browser.close()
         #self.browser.quit()
